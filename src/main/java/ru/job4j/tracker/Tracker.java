@@ -13,11 +13,11 @@ public class Tracker {
         return item;
     }
 
-    public Item[] findAll(){
+    public Item[] findAll() {
         return Arrays.copyOf(items, size);
     }
 
-    public Item[] findByName(String key){
+    public Item[] findByName(String key) {
         Item[] namesWithoutNull = new Item[this.size];
         int size = 0;
         for (int index = 0; index < this.size; index++) {
@@ -46,12 +46,24 @@ public class Tracker {
         return rsl;
     }
 
-    public boolean replace(int id, Item item){
+    public boolean replace(int id, Item item) {
         int index = indexOf(id);
         if (index == -1) {
             return false;
         } else {
             items[index].setName(item.getName());
+            return true;
+        }
+    }
+
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        if (index == -1) {
+            return false;
+        } else {
+            System.arraycopy(items, index + 1, items, index, size - index);
+            items[size - 1] = null;
+            size--;
             return true;
         }
     }
