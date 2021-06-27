@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-    private void init(Input input, Tracker tracker, UserAction[] actions) {
+    void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -29,7 +29,7 @@ public class StartUI {
                 new DeleteAction(),
                 new FindByIdAction(),
                 new FindByNameAction(),
-                new EditAction()
+                new ExitAction()
         };
         new StartUI().init(input, tracker, actions);
     }
